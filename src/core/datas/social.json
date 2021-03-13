@@ -1,0 +1,17 @@
+[
+    {
+        "icon": "fa fa-instagram",
+        "key": "Instagram",
+        "path": "https://www.instagram.com/creativetimofficial"
+    },
+    {
+        "icon": "fa fa-twitter-square",
+        "key": "Twitter",
+        "path": "https://twitter.com/creativetim"
+    },
+    {
+        "icon": "fa fa-github",
+        "key": "Github",
+        "path": "https://github.com/creativetimofficial/vue-argon-design-system"
+    }
+]

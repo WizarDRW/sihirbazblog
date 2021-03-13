@@ -1,0 +1,47 @@
+{
+    "h3": "",
+    "h4": "",
+    "a1": {
+        "href": "",
+        "name": ""
+    },
+    "a2": {
+        "href": "",
+        "name": ""
+    },
+    "categories": [
+        {
+            "href": "",
+            "name": "Creative Tim"
+        },
+        {
+            "href": "",
+            "name": "About Us"
+        },
+        {
+            "href": "",
+            "name": "Blog"
+        },
+        {
+            "href": "",
+            "name": "MIT License"
+        }
+    ],
+    "socials": [
+        {
+            "icon": "fa fa-instagram",
+            "key": "Instagram",
+            "href": "https://www.instagram.com/creativetimofficial"
+        },
+        {
+            "icon": "fa fa-twitter-square",
+            "key": "Twitter",
+            "href": "https://twitter.com/creativetim"
+        },
+        {
+            "icon": "fa fa-github",
+            "key": "Github",
+            "href": "https://github.com/creativetimofficial/vue-argon-design-system"
+        }
+    ]
+}

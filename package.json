@@ -1,0 +1,38 @@
+{
+  "name": "sihirbazblog",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@growthbunker/vuetimeline": "^0.1.17",
+    "axios": "^0.21.1",
+    "bootstrap-vue": "^2.0.4",
+    "flatpickr": "^4.5.1",
+    "nouislider": "^11.1.0",
+    "register-service-worker": "^1.5.2",
+    "vue": "^2.6.6",
+    "vue-axios": "^3.2.3",
+    "vue-carousel": "^0.18.0",
+    "vue-flatpickr-component": "^8.1.1",
+    "vue-google-authenticator": "^1.0.3",
+    "vue-lazyload": "^1.2.6",
+    "vue-meta": "^2.4.0",
+    "vue-router": "^3.0.2",
+    "vue-star-rating": "^1.7.0",
+    "vue2-transitions": "^0.2.3",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.4.0",
+    "@vue/cli-plugin-eslint": "^3.4.0",
+    "@vue/cli-plugin-pwa": "^3.4.0",
+    "@vue/cli-service": "^3.4.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.6"
+  }
+}
