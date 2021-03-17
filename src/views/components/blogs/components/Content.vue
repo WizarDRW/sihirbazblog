@@ -11,7 +11,12 @@
         <span></span>
       </div>
     </section>
-    <section class="section section-skew">
+    <section v-if="loading" id="loading-content">
+      <div class="center-content">
+        <loader color="#6570E2"></loader>
+      </div>
+    </section>
+    <section v-else class="section section-skew">
       <div class="container">
         <card shadow class="card-profile mt--300" no-body>
           <div class="px-4">
@@ -98,6 +103,7 @@
 <script>
 import ApiService from "@/core/services/api.service.js";
 import StarRating from "vue-star-rating";
+import Loader from "vue-spinner/src/RiseLoader.vue";
 export default {
   props: {
     _blog: {
@@ -107,18 +113,21 @@ export default {
   components: {
     StarRating,
     Comment: () => import("./Comment"),
+    Loader
   },
   data() {
     return {
       user: {},
-      blog: {}
+      blog: {},
+      loading: true
     };
   },
-  created() {
+  mounted() {
     ApiService.get(`/blogs/id/${this.$route.params.id}`).then((x) => {
       this.blog = x.data;
       ApiService.get(`/users/id/${x.data.user_id}`).then((u) => {
         this.user = u.data;
+        this.loading = false
       });
     });
   },
@@ -147,5 +156,15 @@ pre{
 #content img{
   width: 100%;
   height: 100%;
+}
+#loading-content {
+  width: 100%;
+  text-align: center;
+}
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
 }
 </style>

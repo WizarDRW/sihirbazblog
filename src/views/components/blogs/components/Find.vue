@@ -33,7 +33,12 @@
       </div>
       <br />
     </section>
-    <section class="section section-lg pt-lg-0" id="blogs">
+    <section v-if="loading" id="loading-list">
+      <div class="center-list">
+        <loader color="#6570E2"></loader>
+      </div>
+    </section>
+    <section v-else class="section section-lg pt-lg-0" id="blogs">
       <div class="container">
         <div class="row">
           <div class="col-10">
@@ -103,11 +108,13 @@
 import ApiService from "@/core/services/api.service.js";
 import { Carousel, Slide } from "vue-carousel";
 import Modal from "@/components/Modal.vue";
+import Loader from "vue-spinner/src/ScaleLoader.vue";
 export default {
   components: {
     Carousel,
     Slide,
     Modal,
+    Loader,
   },
   data() {
     return {
@@ -118,9 +125,10 @@ export default {
         phone: "",
         text: "",
       },
+      loading: true
     };
   },
-  created() {
+  mounted() {
     this.getData();
   },
   methods: {
@@ -129,6 +137,7 @@ export default {
         this.blogs = x.data.sort(
           (x, y) => new Date(y.create_date) - new Date(x.create_date)
         );
+        this.loading = false
       });
     },
     getCategories(categories) {
@@ -152,5 +161,15 @@ export default {
 <style lang="scss" scoped>
 #blogs {
   margin-top: 30px;
+}
+#loading-list {
+  width: 100%;
+  text-align: center;
+}
+.center-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
 }
 </style>

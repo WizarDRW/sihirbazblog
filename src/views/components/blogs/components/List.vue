@@ -33,7 +33,12 @@
       </div>
       <br />
     </section>
-    <section id="blogs">
+    <section v-if="loading" id="loading-list">
+      <div class="center-list">
+        <loader color="#6570E2"></loader>
+      </div>
+    </section>
+    <section v-else id="blogs">
       <div class="cont">
         <div class="row">
           <div class="col-md-6">
@@ -100,14 +105,14 @@
 <script>
 import ApiService from "@/core/services/api.service.js";
 import Modal from "@/components/Modal.vue";
-import { format, register } from "timeago.js";
-import tr from "timeago.js/lib/lang/tr";
+import Loader from "vue-spinner/src/ScaleLoader.vue";
 export default {
   components: {
     Carousel: () => import("./list/Slider"),
     TimeLine: () => import("./list/TimeLine"),
     Impression: () => import("./list/Impression"),
     Modal,
+    Loader,
   },
   data() {
     return {
@@ -118,12 +123,13 @@ export default {
         phone: "",
         text: "",
       },
+      loading: true
     };
   },
-  created() {
+  mounted() {
     ApiService.get("/blogs").then((x) => {
       this.blogs = x.data;
-      JSON.stringify;
+      this.loading = false;
     });
   },
   methods: {
@@ -142,5 +148,15 @@ export default {
 }
 #blogs {
   margin-top: 30px;
+}
+#loading-list {
+  width: 100%;
+  text-align: center;
+}
+.center-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
 }
 </style>
