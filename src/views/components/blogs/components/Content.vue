@@ -52,7 +52,7 @@
               <div class="col-lg-4 order-lg-1">
                 <div class="card-profile-stats d-flex justify-content-center">
                   <div>
-                    <span class="heading">{{ blog.impression }}</span>
+                    <span class="heading">{{ blog.impressions.length }}</span>
                     <span class="description">Görüntüleme</span>
                   </div>
                   <!--  <div>
@@ -113,13 +113,13 @@ export default {
   components: {
     StarRating,
     Comment: () => import("./Comment"),
-    Loader
+    Loader,
   },
   data() {
     return {
       user: {},
       blog: {},
-      loading: true
+      loading: true,
     };
   },
   mounted() {
@@ -127,8 +127,16 @@ export default {
       this.blog = x.data;
       ApiService.get(`/users/id/${x.data.user_id}`).then((u) => {
         this.user = u.data;
-        this.loading = false
+        this.loading = false;
       });
+      fetch("https://api.ipify.org?format=json")
+        .then((response) => response.json())
+        .then((response) => {
+          ApiService.put("/blogs/updateImpression/id/" + x.data._id, {
+            ip_address: response.ip,
+            blog_id: this.blog._id,
+          });
+        });
     });
   },
 };
@@ -147,13 +155,16 @@ export default {
 .back i:hover {
   color: black;
 }
-pre{
+pre {
   background-color: rgb(22, 22, 22);
   color: white;
   padding: 5px 10px 5px 10px;
   border-radius: 5px;
+  unicode-bidi: embed;
+  font-family: monospace;
+  white-space: pre;
 }
-#content img{
+#content img {
   width: 100%;
   height: 100%;
 }

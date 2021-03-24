@@ -72,4 +72,7 @@ export default {
   align-items: center;
   height: 100vh;
 }
+.gb-vue-timeline-update .gb-vue-timeline-update__right .gb-vue-timeline-update__information{
+  display: block !important;
+}
 </style>

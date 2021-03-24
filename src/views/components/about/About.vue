@@ -19,7 +19,7 @@
       <div class="container">
         <div class="row row-grid align-items-center">
           <div class="col-md-3 order-md-2">
-            <img src="img/theme/promo-1.png" class="img-fluid floating" />
+            <img src="https://img.freepik.com/free-vector/people-waving-hand-illustration-concept_52683-29825.jpg?size=626&ext=jpg" class="img-fluid floating" />
           </div>
           <div class="col-md-9 order-md-1">
             <div class="pr-md-5">

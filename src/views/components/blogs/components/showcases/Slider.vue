@@ -35,4 +35,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.VueCarousel-slide {
+  cursor: pointer;
+}
 </style>

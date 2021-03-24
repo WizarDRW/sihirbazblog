@@ -50,12 +50,12 @@ export default {
       type: Boolean,
       default: false,
       description: "Whether alert is closes when clicking"
+    },
+    visible:{
+      type: Boolean,
+      default: false,
+      description: ""
     }
-  },
-  data() {
-    return {
-      visible: true
-    };
   },
   methods: {
     dismissAlert() {

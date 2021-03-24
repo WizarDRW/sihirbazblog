@@ -28,13 +28,12 @@
           class="row align-items-center justify-content-around stars-and-coded"
         >
           <div class="col-sm-4 mt-4 mt-sm-0 text-center">
-            <span class="text-white alpha-7">Kodlayan</span>
             <a
               href="https://softelon.com"
               target="_blank"
               title="Softelon"
             >
-              <img :src="options.codedby" class="ml-3" style="height: 30px" />
+              <img :src="options.codedby" class="ml-3" style="width: 100%; margin-left: 0 !important" />
             </a>
           </div>
         </div>

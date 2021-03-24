@@ -8,7 +8,13 @@ import store from "./core/services/store/store";
 import GoogleAuth from 'vue-google-authenticator'
 import vuetimeline from "@growthbunker/vuetimeline"
 import VueMeta from 'vue-meta'
+import VueMask from 'v-mask'
+import VueGtag from 'vue-gtag'
 
+Vue.use(VueGtag, {
+  config: { id: 'G-7NCN3ZZBC9' }
+})
+Vue.use(VueMask);
 Vue.use(VueMeta)
 Vue.use(vuetimeline, {
   theme: "dark",

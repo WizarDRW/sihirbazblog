@@ -6,7 +6,7 @@
       v-if="item.status == 'Published'"
       class="card"
     >
-      <a @click="$router.push(`/blog/${item._id}`)">
+      <a href="javascript:void(0)" @click="$router.push(`/blog/${item._id}`)">
         <img :src="item.image_path" class="card-img-top" :alt="item.name" />
         <div class="card-body">
           <h5 class="card-title">{{ item.name }}</h5>
