@@ -9,18 +9,23 @@
       <div class="cont">
         <div class="row">
           <div class="col-md-6">
-            <div id="carousel-blogs">
+            <div id="carousel-blogs" class="card">
+              <div class="card-header">En popüler</div>
               <Carousel :_blogs="JSON.stringify(blogs)"></Carousel>
-            </div>
-            <br />
-            <br />
-            <div id="timeline-section">
-              <time-line :_blogs="JSON.stringify(blogs)" />
             </div>
           </div>
           <div class="col-md-6">
-            <div class="card-columns">
-              <impression :_blogs="JSON.stringify(blogs)" />
+            <div class="card">
+              <div class="card-header">En çok okunan 10 yazı</div>
+              <div class="card-body">
+                <impression :_blogs="JSON.stringify(blogs)" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div id="timeline-section" class="card">
+              <div class="card-header">En yeniler</div>
+              <time-line :_blogs="JSON.stringify(blogs)" />
             </div>
           </div>
         </div>
@@ -52,7 +57,7 @@ export default {
       },
       loading: true,
       alert: false,
-      disabled: false
+      disabled: false,
     };
   },
   mounted() {
@@ -65,22 +70,24 @@ export default {
     dialog() {},
     sendMail() {
       this.disabled = true;
-      ApiService.post("/mail/sendmail", this.contact).then((x) => {
-        if (x.status == 200) {
-          this.modal = false;
-          this.contact = {}
-          this.alert = true;
-          this.disabled = false;
-          setTimeout(() => {
-            this.alert = false;
-          }, 6000);
-        }
-      }).catch(err => this.disabled = false);
+      ApiService.post("/mail/sendmail", this.contact)
+        .then((x) => {
+          if (x.status == 200) {
+            this.modal = false;
+            this.contact = {};
+            this.alert = true;
+            this.disabled = false;
+            setTimeout(() => {
+              this.alert = false;
+            }, 6000);
+          }
+        })
+        .catch((err) => (this.disabled = false));
     },
     validEmail: function (email) {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
-    }
+    },
   },
 };
 </script>
@@ -106,14 +113,14 @@ export default {
   align-items: center;
   height: 200px;
 }
-.alert{
-    width: 30%;
-    opacity: 90%;
-    color: #fff;
-    background-color: rgb(0, 165, 0);
-    position: fixed;
-    z-index: 9999;
-    bottom: 10px;
-    right: 10px;
+.alert {
+  width: 30%;
+  opacity: 90%;
+  color: #fff;
+  background-color: rgb(0, 165, 0);
+  position: fixed;
+  z-index: 9999;
+  bottom: 10px;
+  right: 10px;
 }
 </style>

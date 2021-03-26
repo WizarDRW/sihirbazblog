@@ -18,32 +18,16 @@
     </section>
     <section v-else class="section section-skew">
       <div class="container">
-        <card shadow class="card-profile mt--300" no-body>
+        <card shadow class="card-profile mt--400" no-body>
           <div class="px-4">
-            <div class="row justify-content-center">
-              <div class="col-lg-3 order-lg-2">
-                <div class="card-profile-image">
-                  <a href="#">
-                    <img
-                      v-if="user.image_path"
-                      v-lazy="user.image_path"
-                      class="rounded-circle"
-                    />
-                    <img
-                      v-else
-                      src="@/assets/vendor/img/null_profile.png"
-                      class="rounded-circle"
-                    />
-                  </a>
-                </div>
-              </div>
+            <!-- <div class="row justify-content-center">
               <div
                 class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center"
               >
                 <div class="card-profile-actions py-4 mt-lg-0">
-                  <!-- <base-button type="info" size="sm" class="mr-4"
+                  <base-button type="info" size="sm" class="mr-4"
                     >Takip Et</base-button
-                  > -->
+                  >
                   <base-button type="default" size="sm" class="float-right"
                     >Mesaj Gönder</base-button
                   >
@@ -55,7 +39,7 @@
                     <span class="heading">{{ blog.impressions.length }}</span>
                     <span class="description">Görüntüleme</span>
                   </div>
-                  <!--  <div>
+                  <div>
                     <span class="heading">8/10</span>
                     <span class="description">Değer</span>
                     <star-rating :star-size="10" v-bind:max-rating="10" />
@@ -63,21 +47,17 @@
                   <div>
                     <span class="heading">89</span>
                     <span class="description">Yorum</span>
-                  </div> -->
+                  </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="text-center mt-5">
               <h3>
                 {{ blog.name }}
               </h3>
-              <div class="h6 font-weight-300">
-                <i class="ni location_pin mr-2"></i
-                >{{ `${user.first_name}  ${user.last_name}` }}
-              </div>
-              <div class="h6 mt-4">
-                <i class="ni business_briefcase-24 mr-2"></i>{{ user.title }}
-              </div>
+            <div class="h6 mt-1">
+              {{ blog.short_description }}
+            </div>
               <div>
                 <i class="ni education_hat mr-2"></i>
               </div>
@@ -88,14 +68,38 @@
               <br />
               <div class="row justify-content-center">
                 <div class="col-lg-9 text-left">
-                  <div id="content" v-html="blog.description"></div>
+                  <div v-highlight id="content" v-html="blog.description"></div>
                 </div>
               </div>
             </div>
           </div>
+          <div class="order-lg-2">
+            <div class="user-img card-profile-image">
+              <a href="#">
+                <img
+                  v-if="user.image_path"
+                  v-lazy="user.image_path"
+                  class="rounded-circle"
+                />
+                <img
+                  v-else
+                  src="@/assets/vendor/img/null_profile.png"
+                  class="rounded-circle"
+                />
+              </a>
+            </div>
+          </div>
+          <div class="user-info">
+            <div class="h6 font-weight-300">
+              <i class="ni location_pin"></i
+              >{{ `${user.first_name}  ${user.last_name}` }}
+            </div>
+            <div class="h6 mt-1">
+              <i class="ni business_briefcase-24"></i>{{ user.title }}
+            </div>
+          </div>
         </card>
         <br />
-        <!-- <comment /> -->
       </div>
     </section>
   </div>
@@ -104,6 +108,10 @@
 import ApiService from "@/core/services/api.service.js";
 import StarRating from "vue-star-rating";
 import Loader from "vue-spinner/src/RiseLoader.vue";
+import CodeHighlight from "vue-code-highlight/src/CodeHighlight.vue";
+import "vue-code-highlight/themes/duotone-sea.css";
+import "vue-code-highlight/themes/window.css";
+
 export default {
   props: {
     _blog: {
@@ -114,6 +122,7 @@ export default {
     StarRating,
     Comment: () => import("./Comment"),
     Loader,
+    CodeHighlight,
   },
   data() {
     return {
@@ -141,6 +150,7 @@ export default {
   },
 };
 </script>
+
 <style>
 .vue-star-rating span {
   display: none;
@@ -155,15 +165,6 @@ export default {
 .back i:hover {
   color: black;
 }
-pre {
-  background-color: rgb(22, 22, 22);
-  color: white;
-  padding: 5px 10px 5px 10px;
-  border-radius: 5px;
-  unicode-bidi: embed;
-  font-family: monospace;
-  white-space: pre;
-}
 #content img {
   width: 100%;
   height: 100%;
@@ -177,5 +178,29 @@ pre {
   justify-content: center;
   align-items: center;
   height: 200px;
+}
+.user-info {
+  text-align: center;
+  position: absolute;
+  bottom: -90px;
+  right: -170px;
+  width: 100%;
+}
+@media only screen and (max-width: 600px) {
+  .user-info {
+    right: -10px;
+  }
+  .profile-page .card-profile .card-profile-image img {
+    left: 85px !important;
+  }
+}
+@media only screen and (max-width: 510px) {
+  .user-info {
+    text-align: right;
+    right: 5px;
+  }
+  .profile-page .card-profile .card-profile-image img {
+    left: 85px !important;
+  }
 }
 </style>

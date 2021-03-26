@@ -122,4 +122,7 @@ export default {
 };
 </script>
 <style>
+.footer{
+  background-color: blanchedalmond;
+}
 </style>

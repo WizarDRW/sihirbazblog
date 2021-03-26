@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card-columns">
     <div
       v-for="item in getImpressionSort()"
       :key="item._id"

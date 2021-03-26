@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card-body">
     <vue-timeline-update
       v-for="item in getDateSort()"
       :key="item._id"

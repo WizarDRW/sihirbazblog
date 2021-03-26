@@ -98,6 +98,7 @@
 
 <script>
 import Modal from "@/components/Modal.vue";
+import ApiService from "@/core/services/api.service.js";
 export default {  
   components: {
     Modal,

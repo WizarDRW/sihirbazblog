@@ -42,13 +42,9 @@
                 v-for="child in item.children"
                 :key="child.name"
                 :to="child.path"
+                v-if="child.status"
                 class="media d-flex align-items-center"
               >
-                <div
-                  class="icon icon-shape bg-gradient-primary rounded-circle text-white"
-                >
-                  <i class="ni ni-spaceship"></i>
-                </div>
                 <div class="media-body ml-3">
                   <h6 class="heading text-primary mb-md-1">{{ child.name }}</h6>
                   <p class="description d-none d-md-inline-block mb-0">
@@ -61,6 +57,9 @@
         </base-dropdown>
       </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+        <!-- <li class="nav-item">
+          <div @click="mode()"><DarkMode></DarkMode></div>
+        </li> -->
         <li class="nav-item">
           <input
             v-model="find"
@@ -138,12 +137,14 @@ import BaseNav from "@/components/BaseNav";
 import BaseDropdown from "@/components/BaseDropdown";
 import CloseButton from "@/components/CloseButton";
 import ApiService from "@/core/services/api.service.js";
+import DarkMode from "vue-dark-mode-switcher";
 
 export default {
   components: {
     BaseNav,
     CloseButton,
     BaseDropdown,
+    DarkMode
   },
   data() {
     return {
@@ -179,6 +180,11 @@ export default {
     search() {
       if (this.find != "") this.$router.push("/find/" + this.find);
     },
+    mode(){
+      if (localStorage.getItem("darkMode")) {
+        
+      }
+    }
   },
 };
 </script>

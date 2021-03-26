@@ -134,10 +134,11 @@ export default {
   methods: {
     filter() {
       var range = this.dates.range.split(" - ");
+      console.log(this.blogs);
       this.filterBlogList = this.blogs.filter((x) => {
         return (
-          new Date(x.create_date) >= new Date(range[0]) &&
-          new Date(x.create_date) <= new Date(range[1]) &&
+          moment(x.create_date).format("YYYY-MM-DD") >= moment(range[0]).format("YYYY-MM-DD") &&
+          moment(x.create_date).format("YYYY-MM-DD") <= moment(range[1]).format("YYYY-MM-DD") &&
           x.name.toLowerCase().includes(this.search.toLowerCase()) &&
           this.filter_category(x)
         );
@@ -147,6 +148,7 @@ export default {
       var data = true;
       if (this.categories.length > 0) {
         this.categories.some(function (element) {
+          console.log(x.name);
           if (x.categories.includes(element)) return data = true;
           else {
             return data = false;

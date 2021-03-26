@@ -10,7 +10,8 @@ import vuetimeline from "@growthbunker/vuetimeline"
 import VueMeta from 'vue-meta'
 import VueMask from 'v-mask'
 import VueGtag from 'vue-gtag'
-
+import VueCodeHighlight from 'vue-code-highlight';
+Vue.use(VueCodeHighlight)
 Vue.use(VueGtag, {
   config: { id: 'G-7NCN3ZZBC9' }
 })

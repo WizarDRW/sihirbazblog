@@ -1,16 +1,18 @@
 <template>
-  <carousel :per-page="1" :mouse-drag="true" autoplay>
-    <slide
-      v-for="item in get()"
-      :key="item._id"
-      :data-name="item.name"
-      v-if="item.showcases.includes('Carousel')"
-      @slide-click="$router.push(`/blog/${item._id}`)"
-    >
-      <img :src="item.image_path" class="card-img-top" :alt="item.name" />
-      <h4>{{ item.name }}</h4>
-    </slide>
-  </carousel>
+  <div class="card-body">
+    <carousel :per-page="1" :mouse-drag="true" autoplay>
+      <slide
+        v-for="item in get()"
+        :key="item._id"
+        :data-name="item.name"
+        v-if="item.showcases.includes('Carousel')"
+        @slide-click="$router.push(`/blog/${item._id}`)"
+      >
+        <img :src="item.image_path" class="card-img-top" :alt="item.name" />
+        <h4>{{ item.name }}</h4>
+      </slide>
+    </carousel>
+  </div>
 </template>
 
 <script>
@@ -27,9 +29,9 @@ export default {
     },
   },
   methods: {
-      get() {
-         return JSON.parse(this._blogs); 
-      }
+    get() {
+      return JSON.parse(this._blogs);
+    },
   },
 };
 </script>
