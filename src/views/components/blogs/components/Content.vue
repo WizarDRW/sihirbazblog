@@ -55,9 +55,9 @@
               <h3>
                 {{ blog.name }}
               </h3>
-            <div class="h6 mt-1">
-              {{ blog.short_description }}
-            </div>
+              <div class="h6 mt-1">
+                {{ blog.short_description }}
+              </div>
               <div>
                 <i class="ni education_hat mr-2"></i>
               </div>
@@ -111,7 +111,6 @@ import Loader from "vue-spinner/src/RiseLoader.vue";
 import CodeHighlight from "vue-code-highlight/src/CodeHighlight.vue";
 import "vue-code-highlight/themes/duotone-sea.css";
 import "vue-code-highlight/themes/window.css";
-
 export default {
   props: {
     _blog: {
@@ -152,6 +151,9 @@ export default {
 </script>
 
 <style>
+.card-profile{
+  z-index: 999;
+}
 .vue-star-rating span {
   display: none;
 }
@@ -202,5 +204,16 @@ export default {
   .profile-page .card-profile .card-profile-image img {
     left: 85px !important;
   }
+}
+
+@media only screen and (max-width: 1700px) {
+  .iframe-g {
+    width: 260px;
+    position: absolute;
+    padding: 0 0 0 0;
+  }
+}
+.section-shaped .shape-style-1.shape-primary{
+  z-index: 0;
 }
 </style>

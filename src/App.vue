@@ -58,6 +58,9 @@ export default {
 };
 </script>
 <style lang="scss">
+#app{
+  background-color: #ECEDF8;
+}
 #timeline-section img {
   max-width: 90%;
 }
@@ -74,8 +77,5 @@ export default {
 }
 .gb-vue-timeline-update .gb-vue-timeline-update__right .gb-vue-timeline-update__information{
   display: block !important;
-}
-[class^="gb-"]:not(.gb-base-icon) {
-  font-family: Arial, Helvetica, sans-serif !important;
 }
 </style>

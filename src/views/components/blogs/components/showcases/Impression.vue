@@ -9,7 +9,7 @@
       <a href="javascript:void(0)" @click="$router.push(`/blog/${item._id}`)">
         <img :src="item.image_path" class="card-img-top" :alt="item.name" />
         <div class="card-body">
-          <h5 class="card-title">{{ item.name }}</h5>
+          <h6 class="card-title">{{ item.name }}</h6>
           <p class="card-text">
             {{ item.short_description + "..." }}
           </p>
@@ -36,12 +36,12 @@ export default {
 </script>
 
 <style lang="scss">
+.card-body p {
+  font-size: 13px;
+}
 @media only screen and (max-width: 1200px) {
     .card-text{
         display: none;
-    }
-    .card-title{
-        font-size: 15px;
     }
 }
 </style>

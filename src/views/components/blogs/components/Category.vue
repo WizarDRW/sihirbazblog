@@ -7,8 +7,8 @@
     </section>
     <section id="menu">
       <div class="row">
-        <div class="col-lg-3">
-          <div class="sticky">
+        <div data-v-sticky-container class="col-lg-3">
+          <div v-sticky="{topSpacing: 20}">
             <input
               v-model="search"
               type="text"
@@ -79,6 +79,7 @@ import flatpickr from "flatpickr";
 import { Turkish } from "flatpickr/dist/l10n/tr.js";
 import "flatpickr/dist/flatpickr.css";
 import moment from "moment";
+import VueStickyDirective from '@renatodeleao/vue-sticky-directive'
 
 import flatPicker from "vue-flatpickr-component";
 
@@ -148,7 +149,6 @@ export default {
       var data = true;
       if (this.categories.length > 0) {
         this.categories.some(function (element) {
-          console.log(x.name);
           if (x.categories.includes(element)) return data = true;
           else {
             return data = false;
@@ -172,6 +172,9 @@ export default {
       this.filter();
     },
   },
+  directives: {
+    "sticky": VueStickyDirective
+  }
 };
 </script>
 
@@ -180,13 +183,5 @@ export default {
 .row {
   padding: 30px;
   height: 100vh;
-}
-.col-lg-3 {
-  display: initial;
-  justify-content: space-around;
-  align-items: flex-start;
-}
-div.sticky {
-  position: sticky;
 }
 </style>

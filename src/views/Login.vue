@@ -113,7 +113,9 @@ export default {
         this.$store
           .dispatch(LOGIN, { email, password })
           // go to which page after successfully login
-          .then(() => this.$router.push({ name: "Home" }))
+          .then((x) => {
+            this.$router.push({ name: "Home" });
+          })
           .catch((err) => {
             console.log(err);
           });

@@ -8,13 +8,14 @@
             <div class="col-lg-6">
               <h1 class="display-3 text-white">
                 Kısa ve Öz
-                <span>yeni başlayanlar için değil</span>
+                <span>sade ve anlaşılır bilgiler </span>
               </h1>
-              <p class="lead text-white">
+              <!-- <p class="lead text-white">
                 Baştan anlatmıyoruz. Burada zor durumda kalan orta seviye veya
                 profesyoneller için rehber hazırlıyoruz. Aynı zamanda bilgisini
                 burada paylaşabilecek yeni yazarlar kazanmaya çalışıyoruz.
-              </p>
+              </p> -->
+              <br />
               <div class="btn-wrapper">
                 <base-button
                   tag="a"
@@ -72,8 +73,13 @@
             >İptal</base-button
           >
           <base-button type="primary" @click="sendMail()" :disabled="disabled">
-          <loader v-if="disabled" color="white" height="10px" width="10px"></loader>
-          <span v-else>Gönder</span>
+            <loader
+              v-if="disabled"
+              color="white"
+              height="10px"
+              width="10px"
+            ></loader>
+            <span v-else>Gönder</span>
           </base-button>
         </template>
       </modal>
@@ -99,7 +105,7 @@
 <script>
 import Modal from "@/components/Modal.vue";
 import ApiService from "@/core/services/api.service.js";
-export default {  
+export default {
   components: {
     Modal,
   },
@@ -112,28 +118,37 @@ export default {
         text: "",
       },
       alert: false,
-      disabled: false
+      disabled: false,
     };
   },
   methods: {
     sendMail() {
       this.disabled = true;
-      ApiService.post("/mail/sendmail", this.contact).then((x) => {
-        if (x.status == 200) {
-          this.modal = false;
-          this.contact = {}
-          this.alert = true;
-          this.disabled = false;
-          setTimeout(() => {
-            this.alert = false;
-          }, 6000);
-        }
-      }).catch(err => this.disabled = false);
+      ApiService.post("/mail/sendmail", this.contact)
+        .then((x) => {
+          if (x.status == 200) {
+            this.modal = false;
+            this.contact = {};
+            this.alert = true;
+            this.disabled = false;
+            setTimeout(() => {
+              this.alert = false;
+            }, 6000);
+          }
+        })
+        .catch((err) => (this.disabled = false));
     },
     validEmail: function (email) {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
-    }
+    },
   },
-}
+};
 </script>
+
+<style scoped>
+.section-shaped .shape-style-1.shape-default {
+  z-index: 0 !important;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+</style>

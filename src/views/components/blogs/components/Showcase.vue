@@ -6,25 +6,29 @@
       </div>
     </section>
     <section v-else id="blogs">
-      <div class="cont">
+      <div class="news">
         <div class="row">
-          <div class="col-md-6">
-            <div id="carousel-blogs" class="card">
-              <div class="card-header">En popüler</div>
+          <div class="col-lg-6">
+            <div id="carousel-blogs">
               <Carousel :_blogs="JSON.stringify(blogs)"></Carousel>
             </div>
           </div>
-          <div class="col-md-6">
+        </div>
+      </div>
+      <div class="cont">
+        <div class="row">
+          <div class="col-lg-6"></div>
+          <div class="col-lg-6">
             <div class="card">
-              <div class="card-header">En çok okunan 10 yazı</div>
+              <div class="card-header"></div>
               <div class="card-body">
                 <impression :_blogs="JSON.stringify(blogs)" />
               </div>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-lg-6">
             <div id="timeline-section" class="card">
-              <div class="card-header">En yeniler</div>
+              <div class="card-header"></div>
               <time-line :_blogs="JSON.stringify(blogs)" />
             </div>
           </div>
@@ -122,5 +126,22 @@ export default {
   z-index: 9999;
   bottom: 10px;
   right: 10px;
+}
+.card {
+  margin: 10px 0 10px 0;
+}
+.card-header {
+  padding: 0.7rem 1.5rem;
+  background: #cdcae0;
+  color: rgb(54, 54, 54);
+}
+@media only screen and(max-width: 650px) {
+  .cont {
+    padding: 0;
+    margin: 0;
+  }
+  .card-body {
+    padding: 0.5rem;
+  }
 }
 </style>
